@@ -9,8 +9,10 @@ echo "downloading dbpedia spotlight ..."
 
 mkdir resources
 cd resources
-wget http://spotlight.sztaki.hu/downloads/dbpedia-spotlight-latest.jar
-wget http://spotlight.sztaki.hu/downloads/latest_models/en.tar.gz
+# wget http://spotlight.sztaki.hu/downloads/dbpedia-spotlight-latest.jar
+wget https://sourceforge.net/projects/dbpedia-spotlight/files/spotlight/dbpedia-spotlight-1.0.0.jar
+# wget http://spotlight.sztaki.hu/downloads/latest_models/en.tar.gz
+wget https://sourceforge.net/projects/dbpedia-spotlight/files/2016-10/en/model/en.tar.gz
 tar xzf en.tar.gz ; rm en.tar.gz
 mkdir dbpedia-spotlight
 mv en dbpedia-spotlight
@@ -92,7 +94,8 @@ elif [ $1 == "ar" ]; then
 ### Spanish
 elif [ $1 == "es" ]; then
     echo "Spanish"
-    wget http://downloads.dbpedia.org/2016-10/core-i18n/es/long_abstracts_wkd_uris_es.ttl.bz2
+#     wget http://downloads.dbpedia.org/2016-10/core-i18n/es/long_abstracts_wkd_uris_es.ttl.bz2
+    wget http://downloads.dbpedia.org/3.9/es/long_abstracts_en_uris_es.ttl.bz2
     echo "unzipping .."
     bzip2 -dk long_abstracts_wkd_uris_es.ttl.bz2  #unzip keep original
     echo "changing ttl to csv.."
