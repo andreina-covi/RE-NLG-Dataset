@@ -16,7 +16,8 @@ wget https://sourceforge.net/projects/dbpedia-spotlight/files/2016-10/en/model/e
 tar xzf en.tar.gz ; rm en.tar.gz
 mkdir dbpedia-spotlight
 mv en dbpedia-spotlight
-mv dbpedia-spotlight-latest.jar dbpedia-spotlight
+# mv dbpedia-spotlight-latest.jar dbpedia-spotlight
+mv dbpedia-spotlight-1.0.0.jar dbpedia-spotlight
 cd dbpedia-spotlight
 # screen -S dbpedia-spotlight -dm java -Xmx25g -jar dbpedia-spotlight-latest.jar en http://localhost:2222/rest  # uncomment for running dbpedia spotlight server
 cd ..
