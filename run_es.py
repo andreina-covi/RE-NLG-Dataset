@@ -78,4 +78,4 @@ for d in reader.read_documents():
 
     except Exception as e:
 
-        print "error Processing document %s" % d.title
+        print(f"error Processing document {d.title}")
