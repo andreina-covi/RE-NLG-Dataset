@@ -22,7 +22,7 @@ with open(args.input) as f:
             # LOGGING
             c += 1
             if c % __LOG_EVERY__ == 0:
-                print "%s file processed" % c
+                print(f"%s file processed", c)
 
             try:
 
@@ -33,7 +33,7 @@ with open(args.input) as f:
 
             except Exception as e:
 
-                print e.message
+                print(e.message)
 
 
 
