@@ -14,16 +14,16 @@ from pipeline.filter import *
 start_doc = 0   #start reading from document number #
 
 # Reading the DBpedia Abstracts Dataset
-reader = DBpediaAbstractsDataReader('./datasets/wikipedia-abstracts/csv/dbpedia-abstracts-es.csv', skip=start_doc)
+reader = DBpediaAbstractsDataReader('./datasets/wikipedia-abstracts/csv/sample-dbpedia-abstracts-es.csv', skip=start_doc)
 
 # Loading the WikidataSpotlightEntityLinker ... DBpedia Spotlight with mapping DBpedia URIs to Wikidata
 # link = WikidataSpotlightEntityLinker('./datasets/wikidata/dbpedia-wikidata-sameas-dict.csv', support=10, confidence=0.4)
 
 #coref = SimpleCoreference()
-trip_read = TripleReader('./datasets/wikidata/wikidata-triples.csv')
-label_read = LabelReader('./datasets/wikidata/wikidata-labels.csv', 'es', enable_fallback=True)
-trip_read_items = TripleReaderItems('./datasets/wikidata/wikidata-triples.csv')
-trip_read_trip = TripleReaderTriples('./datasets/wikidata/wikidata-triples.csv')
+trip_read = TripleReader('./datasets/wikidata/sample-wikidata-triples.csv')
+label_read = LabelReader('./datasets/wikidata/sample-wikidata-labels.csv', 'es', enable_fallback=True)
+trip_read_items = TripleReaderItems('./datasets/wikidata/sample-wikidata-triples.csv')
+trip_read_trip = TripleReaderTriples('./datasets/wikidata/sample-wikidata-triples.csv')
 
 keyword_ent_linker = KeywordMatchingEntityLinker(trip_read_items, label_read)
 Salign = SimpleAligner(trip_read)
