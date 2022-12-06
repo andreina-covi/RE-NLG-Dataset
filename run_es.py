@@ -47,7 +47,7 @@ writer = JsonWriter('./out_es', "re-nlg", startfile=start_doc)
 for d in reader.read_documents():
 
     try:
-        print "Processing Document Title: %s ..." % d.title
+        print(f"Processing Document Title: %s ...", d.title)
 
         if not ent_filt.run(d):
             continue
@@ -74,7 +74,7 @@ for d in reader.read_documents():
         writer_triples.run(d)
         writer_entities.run(d)
         writer.run(d)
-        print "Number of Annotated Entities %s \t Number of Annotated Triples %s \n -------" % (len(d.entities), len(d.triples))
+        print(f"Number of Annotated Entities %s \t Number of Annotated Triples %s \n -------", (len(d.entities), len(d.triples)))
 
     except Exception as e:
 
