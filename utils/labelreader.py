@@ -19,7 +19,12 @@ class LabelReader:
 
         with open(labels_file) as f:
             for l in f:
-                tmp = l.decode('unicode-escape').split("\t")
+                tmp = l
+                try:
+                    tmp = l.decode('unicode-escape')
+                except AttributeError:
+                    pass
+                tmp = tmp.split("\t")
                 if len(tmp) < 3:
                     continue
                 entity_id = tmp[0].strip().replace(self.baseuri, "")
@@ -69,7 +74,7 @@ class LabelReader:
 
     def doLangFallback(self, d, fall, langs):
         # add fallbacks for missing values
-        for k,v in fall.iteritems():
+        for k,v in fall.items():
             if not k in d:
                 for lang in langs:
                     if lang in fall[k]:
