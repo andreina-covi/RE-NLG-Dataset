@@ -45,23 +45,23 @@ cd datasets
 mkdir wikidata
 cd wikidata
 
-# triples
-echo "download wikidata facts triples statements from wikidata truthy dump .."
-wget https://dumps.wikimedia.org/wikidatawiki/entities/latest-truthy.nt.bz2
-echo "make csv file out of nt .."
-## skipping labels and meta information and keep only wikidata props
-bzcat latest-truthy.nt.bz2 | grep "/prop/direct/P" | sed -E 's/[<>"]//g'| sed -E 's/@.+//g' | cut -d" " -f1-3 | sed -E 's/\s/\t/g' > wikidata-triples.csv
-echo "make csv file for labels out of nt .."
-## get only labels and aliases
-bzcat latest-truthy.nt.bz2 | grep -E "schema.org/name|skos/core#altLabel" | awk '{$2="";print $0}' | sed 's/\(.*\)\@/\1\t/' | sed 's/  /\t/g' | perl -pe 's/(?<!\\)"//g' | awk '{gsub(/\<|\>/,"",$1)}1' > wikidata-labels.csv
+# # triples
+# echo "download wikidata facts triples statements from wikidata truthy dump .."
+# wget https://dumps.wikimedia.org/wikidatawiki/entities/latest-truthy.nt.bz2
+# echo "make csv file out of nt .."
+# ## skipping labels and meta information and keep only wikidata props
+# bzcat latest-truthy.nt.bz2 | grep "/prop/direct/P" | sed -E 's/[<>"]//g'| sed -E 's/@.+//g' | cut -d" " -f1-3 | sed -E 's/\s/\t/g' > wikidata-triples.csv
+# echo "make csv file for labels out of nt .."
+# ## get only labels and aliases
+# bzcat latest-truthy.nt.bz2 | grep -E "schema.org/name|skos/core#altLabel" | awk '{$2="";print $0}' | sed 's/\(.*\)\@/\1\t/' | sed 's/  /\t/g' | perl -pe 's/(?<!\\)"//g' | awk '{gsub(/\<|\>/,"",$1)}1' > wikidata-labels.csv
 
-# DBpedia -Wikidata Sameas
-echo "download DBpedia-Wikidata Same As links dump: wikidatawiki-20150330-sameas-all-wikis.ttl.bz2"
-# wget http://wikidata.dbpedia.org/downloads/20150330/wikidatawiki-20150330-sameas-all-wikis.ttl.bz2
-wget http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.ttl.bz2
-echo "creating a csv dictionary out of english dbpedia uris to wikidata same as links"
-# bzcat wikidatawiki-20150330-sameas-all-wikis.ttl.bz2 | grep "http://dbpedia.org" | awk '{ print $3 " " $1}'  | sed -e 's/wikidata\.dbpedia\.org\/resource/www.wikidata\.org\/entity/'  | sed -e 's/ /\t/' | sed -E 's/[<>\"]//g' > dbpedia-wikidata-sameas-dict.csv
-bzcat iri_same_as_uri_en.ttl.bz2 | grep "http://dbpedia.org" | awk '{ print $3 " " $1}'  | sed -e 's/wikidata\.dbpedia\.org\/resource/www.wikidata\.org\/entity/'  | sed -e 's/ /\t/' | sed -E 's/[<>\"]//g' > dbpedia-wikidata-sameas-dict.csv
+# # DBpedia -Wikidata Sameas
+# echo "download DBpedia-Wikidata Same As links dump: wikidatawiki-20150330-sameas-all-wikis.ttl.bz2"
+# # wget http://wikidata.dbpedia.org/downloads/20150330/wikidatawiki-20150330-sameas-all-wikis.ttl.bz2
+# wget http://downloads.dbpedia.org/3.9/en/iri_same_as_uri_en.ttl.bz2
+# echo "creating a csv dictionary out of english dbpedia uris to wikidata same as links"
+# # bzcat wikidatawiki-20150330-sameas-all-wikis.ttl.bz2 | grep "http://dbpedia.org" | awk '{ print $3 " " $1}'  | sed -e 's/wikidata\.dbpedia\.org\/resource/www.wikidata\.org\/entity/'  | sed -e 's/ /\t/' | sed -E 's/[<>\"]//g' > dbpedia-wikidata-sameas-dict.csv
+# bzcat iri_same_as_uri_en.ttl.bz2 | grep "http://dbpedia.org" | awk '{ print $3 " " $1}'  | sed -e 's/wikidata\.dbpedia\.org\/resource/www.wikidata\.org\/entity/'  | sed -e 's/ /\t/' | sed -E 's/[<>\"]//g' > dbpedia-wikidata-sameas-dict.csv
 
 # # Wikidata properties labels
 # echo "download wikidata properties labels"
@@ -105,7 +105,8 @@ elif [ $1 == "es" ]; then
     echo "changing ttl to csv.."
 #     python prep_wiki_abstracts.py -i long_abstracts_wkd_uris_es.ttl  -o dbpedia-abstracts-es.csv
     python prep_wiki_abstracts.py -i long_abstracts_en_uris_es.ttl  -o dbpedia-abstracts-es.csv
-    rm long_abstracts_wkd_uris_es.ttl
+#     rm long_abstracts_wkd_uris_es.ttl
+    rm long_abstracts_en_uris_es.ttl
 else 
     echo "English"
     wget http://downloads.dbpedia.org/2016-04/core-i18n/en/long_abstracts_en.ttl.bz2
