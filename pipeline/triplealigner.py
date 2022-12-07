@@ -1,4 +1,4 @@
-from pipeline import *
+from pipeline.pipeline import *
 from utils import triplereader
 import itertools
 
