@@ -1,4 +1,4 @@
-from pipeline import *
+from pipeline.pipeline import *
 import json
 import pickle
 import os
