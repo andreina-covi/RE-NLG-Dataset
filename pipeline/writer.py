@@ -41,7 +41,7 @@ class JsonWriter(BasePipeline):
 
         with open(filename, 'w') as outfile:
             json.dump(self.buffer, outfile)
-            print "Saved file %s" % filename
+            print(f"Saved file {filename}") 
             del self.buffer
             self.buffer = []
 
@@ -89,7 +89,7 @@ class CustomeWriterTriples(JsonWriter):
 
         with open(filename, 'w') as outfile:
             pickle.dump(self.buffer, outfile)
-            print "Saved file %s" % filename
+            print(f"Saved file {filename}")
             del self.buffer
             self.buffer = []
 
@@ -131,7 +131,7 @@ class CustomeWriterEntities(JsonWriter):
 
         with open(filename, 'w') as outfile:
             pickle.dump(self.buffer, outfile)
-            print "Saved file %s" % filename
+            print(f"Saved file {filename}")
             del self.buffer
             self.buffer = []
 
