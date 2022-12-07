@@ -34,7 +34,7 @@ class TypePlaceholderTagger:
 
         self.types_dict = {}
         with open(types_file) as f:
-            print "loading types of entities ..."
+            print("loading types of entities ...")
             for l in f.readlines():
                 tmp = l.split("\t")
                 self.types_dict[tmp[0].strip()] = tmp[1].strip()
