@@ -1,4 +1,4 @@
-from pipeline import *
+from pipeline.pipeline import *
 import csv
 import glob
 import os
@@ -56,14 +56,19 @@ class DBpediaAbstractsDataReader:
                         continue
 
                 # For the cases where Wikidata ID is in the DBpedia URI
-                elif 'wikidata.dbpedia.org' in l[0]:
-                    l[0] = l[0].replace("http://wikidata.dbpedia.org/resource/", "http://www.wikidata.org/entity/")
-
+                elif 'wikidata.org' in l[0]:
+                    l[0] = l[0].replace("http://wikidata.org/wiki/", "http://www.wikidata.org/entity/")
+                
+                txt = l[1]
+                try:
+                    txt = txt.decode('utf-8')
+                except AttributeError:
+                    pass
                 document = Document(
                     docid=l[0],
                     pageuri=l[0],
                     title=title,
-                    text=l[1].decode('utf-8')
+                    text=txt
                 )
 
                 yield document
