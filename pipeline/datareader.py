@@ -24,7 +24,7 @@ class DBpediaAbstractsDataReader:
         if db_wd_mapping is not None:
             self.mappings = {}
             with open(db_wd_mapping) as f:
-                print "loading DBpedia to Wikidata URI mappings..."
+                print("loading DBpedia to Wikidata URI mappings...")
 
                 for l in f.readlines():
                     tmp = l.split("\t")
@@ -101,7 +101,7 @@ class TRExDataReader:
         if db_wd_mapping is not None:
             self.mappings = {}
             with open(db_wd_mapping) as f:
-                print "loading URI mappings files..."
+                print("loading URI mappings files...")
 
                 for l in f.readlines():
                     tmp = l.split("\t")
@@ -130,7 +130,7 @@ class TRExDataReader:
                     continue
 
                 if self.titles is not None and d['title'] not in self.titles:
-                    print "%s  -- not found " % d['title']
+                    print(f"{d['title']}  -- not found ") 
                     continue
 
                 if self.mappings is not None:
