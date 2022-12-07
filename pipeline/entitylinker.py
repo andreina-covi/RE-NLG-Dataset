@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from pipeline import *
+from pipeline.pipeline import *
 #import spotlight
 import csv
 import re
